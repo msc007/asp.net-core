@@ -107,5 +107,7 @@ namespace WebApplication1.Controllers
 
             return Ok();
         }
+
+        // NOTE: Attribute route with url param will make it required; you can also mix url param with query param.
     }
 }
