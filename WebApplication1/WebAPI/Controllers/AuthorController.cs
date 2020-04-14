@@ -4,19 +4,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using WebApplication1.Controllers.V2;
 using WebApplication1.Models;
 
-namespace WebApplication1.Controllers
+namespace WebApplication1.Controllers.V1
 {
     [ApiController]
     [Route("/api/authors")]
     public class AuthorController : ControllerBase
     {
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly BookStoreDBContext _context;
 
-        public AuthorController(ILogger<WeatherForecastController> logger)
+        // Dependency Injection
+        public AuthorController(ILogger<WeatherForecastController> logger, BookStoreDBContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         [HttpGet]
@@ -27,8 +31,7 @@ namespace WebApplication1.Controllers
             try
             {
                 _logger.LogInformation("HELLO FROM AuthorController/GetAll");
-                using var context = new BookStoreDBContext();
-                response = context.Author.ToList();
+                response = _context.Author.ToList();
 
             }
             catch (Exception ex)
@@ -47,8 +50,7 @@ namespace WebApplication1.Controllers
             try
             {
                 _logger.LogInformation("HELLO FROM AuthorController/Get");
-                using var context = new BookStoreDBContext();
-                response = context.Author.FirstOrDefault(author => author.AuthorId == id);
+                response = _context.Author.FirstOrDefault(author => author.AuthorId == id);
             }
             catch(Exception ex)
             {
@@ -59,20 +61,38 @@ namespace WebApplication1.Controllers
             return Ok(response);
         }
 
+
+        /// <summary>
+        /// Add an author
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST author/add
+        ///     {
+        ///        "firstName": "foo",
+        ///        "lastName": "bar"
+        ///     }
+        ///
+        /// </remarks>
+        /// <param name="firstname"></param>
+        /// <param name="lastname"></param>
+        /// <returns>A newly created TodoItem</returns>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
         [HttpPost]
         [Route("add")]
         public IActionResult Add(string firstName, string lastName)
         {
             try
             {
-                using var context = new BookStoreDBContext();
                 Author author = new Author
                 {
                     FirstName = firstName,
                     LastName = lastName
                 };
-                context.Author.Add(author);
-                context.SaveChanges();
+                _context.Author.Add(author);
+                _context.SaveChanges();
             } 
             catch(Exception ex)
             {
@@ -89,15 +109,14 @@ namespace WebApplication1.Controllers
         {
             try
             {
-                using var context = new BookStoreDBContext();
                 var author = new Author()
                 {
                     AuthorId = id,
                     Phone = phonenumber
                 };
-                context.Author.Attach(author);
-                context.Entry(author).Property(a => a.Phone).IsModified = true;
-                context.SaveChanges();
+                _context.Author.Attach(author);
+                _context.Entry(author).Property(a => a.Phone).IsModified = true;
+                _context.SaveChanges();
             }
             catch (Exception ex)
             {

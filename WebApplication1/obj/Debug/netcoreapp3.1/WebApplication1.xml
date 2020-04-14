@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApplication1</name>
+    </assembly>
+    <members>
+        <member name="M:WebApplication1.Controllers.V1.AuthorController.Add(System.String,System.String)">
+             <summary>
+             Add an author
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 POST author/add
+                 {
+                    "firstName": "foo",
+                    "lastName": "bar"
+                 }
+            
+             </remarks>
+             <param name="firstname"></param>
+             <param name="lastname"></param>
+             <returns>A newly created TodoItem</returns>
+             <response code="201">Returns the newly created item</response>
+             <response code="400">If the item is null</response> 
+        </member>
+    </members>
+</doc>

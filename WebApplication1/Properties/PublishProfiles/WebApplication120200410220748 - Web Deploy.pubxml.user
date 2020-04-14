@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAuq4i9OKRqECInfcmWP4kowAAAAACAAAAAAAQZgAAAAEAACAAAACu57KXYc6KhFSS8Tk/5uvbIbarFSYvLAT0rgjhAnop3gAAAAAOgAAAAAIAACAAAAAFvdnVlknBRTP6QzgtNN+6jS9HaRKBrS+jhAuAF8X2gYAAAAANi65Du4s1SI6DRL771teX0mqmRbE35KJ0Dl/ONDJQtq+gfBC2SOYQTzDm5Ojs4/g1RVluPiQ1oQyY+6AoeBG0yUta6PRs9xVgxYyHsXJFujz2XsPjKBA4achajiBOyzDsCMiLtodolpXrq/7v4pydAQf5UNUFkKKcxMFgZDFwmEAAAADY4dZY69exH0ms6X/WX4fiaDCL8IM3+oldgmW8MqigleUZwHZzMjG3A3x5QhD4Hn013HOXklKDDaZ4ugqsv7Ta</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="BookStoreDB">
+      <Value>Server=tcp:webapplication120200410220748dbserver.database.windows.net,1433%3bInitial Catalog=WebApplication120200410220748_db%3bPersist Security Info=False%3bUser ID=tl492%3bPassword=Chlalstjr5569%3bMultipleActiveResultSets=False%3bEncrypt=True%3bTrustServerCertificate=False%3bConnection Timeout=30%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="WebApplication1.Models.BookStoreDBContext">
+      <Value>Server=tcp:webapplication120200410220748dbserver.database.windows.net,1433%3bInitial Catalog=WebApplication120200410220748_db%3bPersist Security Info=False%3bUser ID=tl492%3bPassword=Chlalstjr5569%3bMultipleActiveResultSets=False%3bEncrypt=True%3bTrustServerCertificate=False%3bConnection Timeout=30%3b</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

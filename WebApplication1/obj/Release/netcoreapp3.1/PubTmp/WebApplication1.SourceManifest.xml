@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="C:\Users\tl492\source\repos\WebApplication1\WebApplication1\obj\Release\netcoreapp3.1\PubTmp\Out\" />
+  <dbfullsql path="C:\Users\tl492\source\repos\WebApplication1\WebApplication1\obj\Release\netcoreapp3.1\PubTmp\EFSQLScripts\WebApplication1.Models.BookStoreDBContext.sql" />
+</sitemanifest>
